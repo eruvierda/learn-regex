@@ -42,7 +42,7 @@ Sebuah ekspresi reguler adalah pola yang dicocokkan terhadap sebuah rangkaian su
 Bayangkan lah Anda menulis sebuah aplikasi dan Anda ingin membuat aturan jika seorang pengguna memilih nama pengguna. Kita ingin mengizinkan nama pengguna mengandung huruf, angka, garis bawah dan tanda hubung. Kita juga ingin membatasi jumlah karakter dalam nama pengguna sehingga tidak terlihat jelek. Kita bisa menggunakan ekspresi reguler berikut untuk memvalidasi nama pengguna :
 <br/><br/>
 <p align="center">
-  <img src="./img/regexp-en.png" alt="Regular expression">
+  <img src="./img/regexp-id.png" alt="Regular expression">
 </p>
 Ekspresi reguler di atas dapat menerima rangakaian kata `jo-hn_doe`,`jo-hn-doe` dan `john12_as`. Pola ini tidka cocok dengan `Jo` karena rangkaian ini menggandung huruf besar dan terlalu pendek.
 
