@@ -49,57 +49,52 @@ Ekspresi reguler di atas dapat menerima rangakaian kata `jo-hn_doe`,`jo-hn-doe` 
 ## Daftar Isi :
 
 - [Pencocokan Dasar](#1-basic-matchers)
-- [Meta Characters](#2-meta-characters)
-  - [The Full Stop](#21-the-full-stops)
-  - [Character Sets](#22-character-sets)
-    - [Negated Character Sets](#221-negated-character-sets)
-  - [Repetitions](#23-repetitions)
-    - [The Star](#231-the-star)
-    - [The Plus](#232-the-plus)
-    - [The Question Mark](#233-the-question-mark)
-  - [Braces](#24-braces)
-  - [Capturing Groups](#25-capturing-groups)
-      - [Non-Capturing Groups](#251-non-capturing-groups)
-  - [Alternation](#26-alternation)
-  - [Escaping Special Characters](#27-escaping-special-characters)
-  - [Anchors](#28-anchors)
-    - [The Caret](#281-the-caret)
-    - [The Dollar Sign](#282-the-dollar-sign)
-- [Shorthand Character Sets](#3-shorthand-character-sets)
+- [Karakter Meta](#2-meta-characters)
+  - [Titik](#21-the-full-stops)
+  - [Set Karakter](#22-character-sets)
+    - [Set Karakter yang dinegasikan](#221-negated-character-sets)
+  - [Perulangan](#23-repetitions)
+    - [Tanda Bintang](#231-the-star)
+    - [Tanda Tambah](#232-the-plus)
+    - [Tanda Tanya](#233-the-question-mark)
+  - [Tanda Kurung](#24-braces)
+  - [Kelompok Penangkapan](#25-capturing-groups)
+      - [Kelompok non-Penangkapan](#251-non-capturing-groups)
+  - [Alternasi](#26-alternation)
+  - [Meloloskan Karakter khusus](#27-escaping-special-characters)
+  - [Penanda Posisi](#28-anchors)
+    - [Tanda Karat (Caret)](#281-the-caret)
+    - [Tanda Dolar](#282-the-dollar-sign)
+- [Set Karakter Singkatan](#3-shorthand-character-sets)
 - [Lookarounds](#4-lookarounds)
-  - [Positive Lookahead](#41-positive-lookahead)
-  - [Negative Lookahead](#42-negative-lookahead)
-  - [Positive Lookbehind](#43-positive-lookbehind)
-  - [Negative Lookbehind](#44-negative-lookbehind)
+  - [Positif Lookahead](#41-positive-lookahead)
+  - [Negatif Lookahead](#42-negative-lookahead)
+  - [Positif Lookbehind](#43-positive-lookbehind)
+  - [Negatif Lookbehind](#44-negative-lookbehind)
 - [Flags](#5-flags)
-  - [Case Insensitive](#51-case-insensitive)
-  - [Global Search](#52-global-search)
-  - [Multiline](#53-multiline)
-- [Greedy vs Lazy Matching](#6-greedy-vs-lazy-matching)
+  - [Sensitivitas Huruf (besar/kecil)](#51-case-insensitive)
+  - [Pencarian Global](#52-global-search)
+  - [Baris Berganda](#53-multiline)
+- [Pencocokan Serakah vs Malas](#6-greedy-vs-lazy-matching)
 
-## 1. Basic Matchers
+## 1. Pencocokan Dasar
 
-A regular expression is just a pattern of characters that we use to perform a
-search in a text.  For example, the regular expression `the` means: the letter
-`t`, followed by the letter `h`, followed by the letter `e`.
-
+Sebuah ekspresi reguler hanyalah pola karakter yang kita gunakan untuk melakukan pencarian dalam teks. Sebagai contoh, ekspresi reguler `the` berarti: huruf `t`, diikuti oleh huruf `h`, diikuti oleh huruf `e`.
 <pre>
 "the" => The fat cat sat on <a href="#learn-regex"><strong>the</strong></a> mat.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/dmRygT/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/dmRygT/1)
 
-The regular expression `123` matches the string `123`. The regular expression is
-matched against an input string by comparing each character in the regular
-expression to each character in the input string, one after another. Regular
-expressions are normally case-sensitive so the regular expression `The` would
-not match the string `the`.
+Ekspresi reguler `123` akan cocok dengan string `123`. Ekspresi reguler dicocokkan dengan string masukan dengan cara membandingkan setiap karakter dalam ekspresi reguler dengan setiap karakter dalam string masukan, satu per satu. Biasanya, ekspresi reguler bersifat case-sensitive (peka terhadap huruf besar/kecil), sehingga ekspresi reguler `The` tidak akan cocok dengan string `the`.
+
+Ini berarti huruf besar dan huruf kecil dianggap berbeda dalam pencocokan pola menggunakan ekspresi reguler, kecuali jika diatur untuk mengabaikan perbedaan tersebut.
 
 <pre>
 "The" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on the mat.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/1paXsy/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/1paXsy/1)
 
 ## 2. Meta Characters
 
@@ -134,7 +129,7 @@ letter `a`, followed by the letter `r`.
 ".ar" => The <a href="#learn-regex"><strong>car</strong></a> <a href="#learn-regex"><strong>par</strong></a>ked in the <a href="#learn-regex"><strong>gar</strong></a>age.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/xc9GkU/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/xc9GkU/1)
 
 ## 2.2 Character Sets
 
@@ -148,7 +143,7 @@ doesn't matter. For example, the regular expression `[Tt]he` means: an uppercase
 "[Tt]he" => <a href="#learn-regex"><strong>The</strong></a> car parked in <a href="#learn-regex"><strong>the</strong></a> garage.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/2ITLQ4/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/2ITLQ4/1)
 
 A period inside a character set, however, means a literal period. The regular
 expression `ar[.]` means: a lowercase character `a`, followed by the letter `r`,
@@ -158,7 +153,7 @@ followed by a period `.` character.
 "ar[.]" => A garage is a good place to park a c<a href="#learn-regex"><strong>ar.</strong></a>
 </pre>
 
-[Test the regular expression](https://regex101.com/r/wL3xtE/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/wL3xtE/1)
 
 ### 2.2.1 Negated Character Sets
 
@@ -171,7 +166,7 @@ followed by the character `a`, followed by the letter `r`.
 "[^c]ar" => The car <a href="#learn-regex"><strong>par</strong></a>ked in the <a href="#learn-regex"><strong>gar</strong></a>age.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/nNNlq3/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/nNNlq3/1)
 
 ## 2.3 Repetitions
 
@@ -191,7 +186,7 @@ the repetitions of the whole character set. For example, the regular expression
 "[a-z]*" => T<a href="#learn-regex"><strong>he</strong></a> <a href="#learn-regex"><strong>car</strong></a> <a href="#learn-regex"><strong>parked</strong></a> <a href="#learn-regex"><strong>in</strong></a> <a href="#learn-regex"><strong>the</strong></a> <a href="#learn-regex"><strong>garage</strong></a> #21.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/7m8me5/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/7m8me5/1)
 
 The `*` symbol can be used with the meta character `.` to match any string of
 characters `.*`. The `*` symbol can be used with the whitespace character `\s`
@@ -204,7 +199,7 @@ followed by zero or more spaces.
 "\s*cat\s*" => The fat<a href="#learn-regex"><strong> cat </strong></a>sat on the con<a href="#learn-regex"><strong>cat</strong></a>enation.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/gGrwuz/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/gGrwuz/1)
 
 ### 2.3.2 The Plus
 
@@ -217,7 +212,7 @@ clarified that`t` is the last `t` in the sentence.
 "c.+t" => The fat <a href="#learn-regex"><strong>cat sat on the mat</strong></a>.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/Dzf9Aa/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/Dzf9Aa/1)
 
 ### 2.3.3 The Question Mark
 
@@ -230,13 +225,13 @@ For example, the regular expression `[T]?he` means: Optional uppercase
 "[T]he" => <a href="#learn-regex"><strong>The</strong></a> car is parked in the garage.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/cIg9zm/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/cIg9zm/1)
 
 <pre>
 "[T]?he" => <a href="#learn-regex"><strong>The</strong></a> car is parked in t<a href="#learn-regex"><strong>he</strong></a> garage.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/kPpO2x/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/kPpO2x/1)
 
 ## 2.4 Braces
 
@@ -249,7 +244,7 @@ repeated. For example, the regular expression `[0-9]{2,3}` means: Match at least
 "[0-9]{2,3}" => The number was 9.<a href="#learn-regex"><strong>999</strong></a>7 but we rounded it off to <a href="#learn-regex"><strong>10</strong></a>.0.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/juM86s/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/juM86s/1)
 
 We can leave out the second number. For example, the regular expression
 `[0-9]{2,}` means: Match 2 or more digits. If we also remove the comma, the
@@ -259,13 +254,13 @@ regular expression `[0-9]{3}` means: Match exactly 3 digits.
 "[0-9]{2,}" => The number was 9.<a href="#learn-regex"><strong>9997</strong></a> but we rounded it off to <a href="#learn-regex"><strong>10</strong></a>.0.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/Gdy4w5/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/Gdy4w5/1)
 
 <pre>
 "[0-9]{3}" => The number was 9.<a href="#learn-regex"><strong>999</strong></a>7 but we rounded it off to 10.0.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/Sivu30/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/Sivu30/1)
 
 ## 2.5 Capturing Groups
 
@@ -282,7 +277,7 @@ For example, the regular expression `(c|g|p)ar` means: a lowercase `c`,
 "(c|g|p)ar" => The <a href="#learn-regex"><strong>car</strong></a> is <a href="#learn-regex"><strong>par</strong></a>ked in the <a href="#learn-regex"><strong>gar</strong></a>age.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/tUxrBG/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/tUxrBG/1)
 
 Note that capturing groups do not only match, but also capture, the characters for use in 
 the parent language. The parent language could be Python or JavaScript or virtually any
@@ -299,7 +294,7 @@ within parentheses `(...)`. For example, the regular expression `(?:c|g|p)ar` is
 "(?:c|g|p)ar" => The <a href="#learn-regex"><strong>car</strong></a> is <a href="#learn-regex"><strong>par</strong></a>ked in the <a href="#learn-regex"><strong>gar</strong></a>age.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/Rm7Me8/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/Rm7Me8/1)
 
 Non-capturing groups can come in handy when used in find-and-replace functionality or 
 when mixed with capturing groups to keep the overview when producing any other kind of output. 
@@ -322,7 +317,7 @@ in parentheses can be met and it will match.
 "(T|t)he|car" => <a href="#learn-regex"><strong>The</strong></a> <a href="#learn-regex"><strong>car</strong></a> is parked in <a href="#learn-regex"><strong>the</strong></a> garage.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/fBXyX0/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/fBXyX0/1)
 
 ## 2.7 Escaping Special Characters
 
@@ -339,7 +334,7 @@ character.
 "(f|c|m)at\.?" => The <a href="#learn-regex"><strong>fat</strong></a> <a href="#learn-regex"><strong>cat</strong></a> sat on the <a href="#learn-regex"><strong>mat.</strong></a>
 </pre>
 
-[Test the regular expression](https://regex101.com/r/DOc5Nu/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/DOc5Nu/1)
 
 ## 2.8 Anchors
 
@@ -364,13 +359,13 @@ lowercase `h`, followed by a lowercase `e`.
 "(T|t)he" => <a href="#learn-regex"><strong>The</strong></a> car is parked in <a href="#learn-regex"><strong>the</strong></a> garage.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/5ljjgB/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/5ljjgB/1)
 
 <pre>
 "^(T|t)he" => <a href="#learn-regex"><strong>The</strong></a> car is parked in the garage.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/jXrKne/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/jXrKne/1)
 
 ### 2.8.2 The Dollar Sign
 
@@ -383,13 +378,13 @@ character and the matcher must be at the end of the string.
 "(at\.)" => The fat c<a href="#learn-regex"><strong>at.</strong></a> s<a href="#learn-regex"><strong>at.</strong></a> on the m<a href="#learn-regex"><strong>at.</strong></a>
 </pre>
 
-[Test the regular expression](https://regex101.com/r/y4Au4D/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/y4Au4D/1)
 
 <pre>
 "(at\.)$" => The fat cat. sat. on the m<a href="#learn-regex"><strong>at.</strong></a>
 </pre>
 
-[Test the regular expression](https://regex101.com/r/t0AkOd/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/t0AkOd/1)
 
 ##  3. Shorthand Character Sets
 
@@ -442,7 +437,7 @@ or `the` only if it's followed by the word `fat`.
 "(T|t)he(?=\sfat)" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on the mat.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/IDDARt/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/IDDARt/1)
 
 ### 4.2 Negative Lookahead
 
@@ -457,7 +452,7 @@ from the input string that are not followed by a space character and the word `f
 "(T|t)he(?!\sfat)" => The fat cat sat on <a href="#learn-regex"><strong>the</strong></a> mat.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/V32Npg/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/V32Npg/1)
 
 ### 4.3 Positive Lookbehind
 
@@ -470,7 +465,7 @@ from the input string that come after the word `The` or `the`.
 "(?<=(T|t)he\s)(fat|mat)" => The <a href="#learn-regex"><strong>fat</strong></a> cat sat on the <a href="#learn-regex"><strong>mat</strong></a>.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/avH165/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/avH165/1)
 
 ### 4.4 Negative Lookbehind
 
@@ -483,7 +478,7 @@ string that are not after the word `The` or `the`.
 "(?&lt;!(T|t)he\s)(cat)" => The cat sat on <a href="#learn-regex"><strong>cat</strong></a>.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/8Efx5G/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/8Efx5G/1)
 
 ## 5. Flags
 
@@ -510,13 +505,13 @@ whole input string.
 "The" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on the mat.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/dpQyf9/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/dpQyf9/1)
 
 <pre>
 "/The/gi" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on <a href="#learn-regex"><strong>the</strong></a> mat.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/ahfiuh/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/ahfiuh/1)
 
 ### 5.2 Global Search
 
@@ -530,13 +525,13 @@ the regular expression, it will now find all matches in the input string, not ju
 "/.(at)/" => The <a href="#learn-regex"><strong>fat</strong></a> cat sat on the mat.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/jnk6gM/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/jnk6gM/1)
 
 <pre>
 "/.(at)/g" => The <a href="#learn-regex"><strong>fat</strong></a> <a href="#learn-regex"><strong>cat</strong></a> <a href="#learn-regex"><strong>sat</strong></a> on the <a href="#learn-regex"><strong>mat</strong></a>.
 </pre>
 
-[Test the regular expression](https://regex101.com/r/dO1nef/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/dO1nef/1)
 
 ### 5.3 Multiline
 
@@ -554,7 +549,7 @@ at the end of each line in a string.
                 on the <a href="#learn-regex"><strong>mat.</strong></a>
 </pre>
 
-[Test the regular expression](https://regex101.com/r/hoGMkP/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/hoGMkP/1)
 
 <pre>
 "/.at(.)?$/gm" => The <a href="#learn-regex"><strong>fat</strong></a>
@@ -562,7 +557,7 @@ at the end of each line in a string.
                   on the <a href="#learn-regex"><strong>mat.</strong></a>
 </pre>
 
-[Test the regular expression](https://regex101.com/r/E88WE2/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/E88WE2/1)
 
 ## 6. Greedy vs Lazy Matching
 By default, a regex will perform a greedy match, which means the match will be as long as
@@ -572,13 +567,13 @@ possible. We can use `?` to match in a lazy way, which means the match should be
 "/(.*at)/" => <a href="#learn-regex"><strong>The fat cat sat on the mat</strong></a>. </pre>
 
 
-[Test the regular expression](https://regex101.com/r/AyAdgJ/1)
+[Uji Ekspresi Reguler](https://regex101.com/r/AyAdgJ/1)
 
 <pre>
 "/(.*?at)/" => <a href="#learn-regex"><strong>The fat</strong></a> cat sat on the mat. </pre>
 
 
-[Test the regular expression](https://regex101.com/r/AyAdgJ/2)
+[Uji Ekspresi Reguler](https://regex101.com/r/AyAdgJ/2)
 
 
 ## Contribution
